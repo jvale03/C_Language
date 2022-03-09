@@ -46,19 +46,24 @@ void quadrados(int q[], int n) {
     }
 }
 
-void pascal(int v[],int n) {
-    
+long fun(int y) {
+    int p;
+    long result=1;
+    for(p=1;p<=y;p++)
+        result=result*p;
+    return (result);
 }
 
+
 int main() {
-    int x,y,w,m;
-    int v[9] = {8,7,6,5,4,3,2,1,0}; 
-    scanf("%d%d",&x,&y);
+    int i,u,w,m;
+    int v[9] = {8,7,6,5,4,3,2,1,0};
+    scanf("%d%d",&i,&u);
     // swapM
-    swapM(&x,&y);
-    printf("x=%d y=%d\n",x,y);
+    swapM(&i,&u);
+    printf("x=%d y=%d\n",i,u);
     // swap
-    swap(v,x,y);
+    swap(v,i,u);
     for(w=0;w<=8;w++) {
         printf("%d ",v[w]);
     }
@@ -72,7 +77,7 @@ int main() {
     }
     printf("\n");
     // maximum
-    maximum(v,9,&m);
+    maximum(v,9,&m);    
     // quadrados
     quadrados(v,9);
     for(w=0;w<=8;w++) {
@@ -80,10 +85,21 @@ int main() {
     }
     printf("\n");
     // pascal
+    int x, y, z;
+    printf("Input the number of rows in Pascal's triangle: ");
+    scanf("%d",&y);
+    for ( x = 0 ; x < y ; x++ ) {
+        for ( z = 0 ; z <= ( y - x - 2 ) ; z++ )
+            printf(" ");
+        for( z = 0 ; z <= x ; z++ )
+            printf("%ld ",fun(x)/(fun(z)*fun(x-z)));
 
+        printf("\n");
+    }
     return 0;
 }
 
 
 
 // no caso do m, perguntar porque é que usamos os endereços e assim quando podemos obter o mesmo resultado sem nenhum dos dois!
+// perguntar tambem quando se usa void e quando se usa int nas auxiliares
